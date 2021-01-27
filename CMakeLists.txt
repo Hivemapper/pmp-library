@@ -74,7 +74,7 @@ if(PMP_BUILD_VIS)
 endif(PMP_BUILD_VIS)
 
 # setup Eigen
-set(EIGEN_SOURCE_DIR "external/eigen")
+set(EIGEN_SOURCE_DIR "/usr/local/include/eigen3/")
 include_directories(${EIGEN_SOURCE_DIR})
 
 # setup PLY
