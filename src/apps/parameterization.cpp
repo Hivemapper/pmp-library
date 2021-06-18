@@ -1,4 +1,4 @@
-// Copyright 2011-2019 the Polygon Mesh Processing Library developers.
+// Copyright 2011-2021 the Polygon Mesh Processing Library developers.
 // Distributed under a MIT-style license, see LICENSE.txt for details.
 
 #include <pmp/visualization/MeshViewer.h>
@@ -25,15 +25,13 @@ Viewer::Viewer(const char* title, int width, int height)
 
 bool Viewer::load_mesh(const char* filename)
 {
-    if (MeshViewer::load_mesh(filename))
-    {
-        // alloc tex coordinates
-        mesh_.vertex_property<TexCoord>("v:tex", TexCoord(0, 0));
-        update_mesh();
-        return true;
-    }
-    else
-        return false;
+    bool ok = MeshViewer::load_mesh(filename);
+
+    // alloc tex coordinates
+    mesh_.vertex_property<TexCoord>("v:tex", TexCoord(0, 0));
+    update_mesh();
+
+    return ok;
 }
 
 void Viewer::process_imgui()
